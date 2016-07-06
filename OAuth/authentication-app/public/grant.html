@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>IBM API Connect OAuth Authorize Page</title>
+  </head>
+<body style="font-size: 48px">
+  <div>
+  <div>
+  <form method="post" enctype="application/x-www-form-urlencoded" action="authorize" style="border-radius: 5px;font-family: 'Open Sans', arial;background-color: #f7f7f7;padding: 20px;margin-top:10%;margin-left:2%;margin-right:2%;">
+  <input type="hidden" name="dp-state"       value="A"/>
+  <input type="hidden" name="resource-owner" value="A"/>
+  <input type="hidden" name="dp-data" value="A"/>
+  <input type="hidden" name="redirect_uri"   value="A"/>
+  <input type="hidden" name="scope" value="A"/>
+  <input type="hidden" name="original-url" value="A"/>
+  <input type="hidden" name="client_id" value="A"/>
+  <h1>IBM API Connect</h1>
+  <AZ-INJECT-HIDDEN-INPUT-FIELDS/><h2>Greetings...</h2>
+  <DISPLAY-RESOURCE-OWNER/><h2 style="font-size: 48px">The IBM Redbooks Mobile App would like to access your social review data.</h2>
+  <OAUTH-APPLICATION-NAME/>
+  <div>
+  <button type="submit" name="approve" value="false" style="background-color: #4d90fe;width:45%; important!float: left;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size:48px">No Thanks</button>
+  <button type="submit" name="approve" value="true" style="background-color: #4d90fe;width:45%; important!float: right;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size:48px">Allow Access</button>
+  </div>
+  <p/><p/>
+  </form>
+  </div>
+  <AZ-INTERNAL-CUSTOM-FORM-ERROR/>
+  </div>
+
+</body>
+</html>

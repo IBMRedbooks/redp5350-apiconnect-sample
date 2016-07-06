@@ -1,0 +1,175 @@
+paths:
+  /review/oauth:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+      operationId: review.oauth
+      summary: Oauth trigger API
+      security:
+        - clientIdHeader: []
+  /reviews/counter:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+      summary: Find the count of reviews for an item”
+      operationId: review.counter
+  /reviews/avgrating:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+      summary: Find average rating of an item
+      operationId: review.avgrating
+  /reviews:
+    post:
+      tags:
+        - review
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: review.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    get:
+      tags:
+        - review
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: review.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/review'
+      deprecated: false
+      security:
+        - clientIdHeader: []
+definitions:
+  review:
+    properties:
+      comment:
+        description: reviewer comment
+        type: string
+      date:
+        description: review date
+        type: string
+        format: date
+      itemId:
+        description: Item ID
+        type: number
+        format: double
+      rating:
+        description: reviewer item rating
+        type: number
+        format: double
+      reviewer_email:
+        description: reviewers email
+        type: string
+      reviewer_name:
+        description: reviewers name
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - itemId
+    additionalProperties: false
+swagger: '2.0'
+info:
+  x-ibm-name: socialreviews
+  version: 1.0.0
+  title: socialreviews
+  contact:
+    name: Admin
+    email: admin@companyc.com
+    url: 'http://www.companyc.com'
+  license:
+    url: 'http://www.companyc.com'
+    name: companyC license
+  termsOfService: CompanyC terms of service
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  apic-oauth-provider:
+    type: oauth2
+    description: ''
+    flow: implicit
+    authorizationUrl: >-
+      https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog/oauth20/authorize
+    scopes:
+      review: Allow user to pose comment/reviews to Social review API
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    apic-oauth-provider:
+      - review
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - gatewayscript:
+          title: gatewayscript
+          source: |-
+            var reqUrl = apim.getvariable('request.uri');
+            var filterQuery = reqUrl.split('?')[1];
+            if(filterQuery || filterQuery !== '')
+            {
+                apim.setvariable('filterQuery', filterQuery);
+            }else
+            {
+                apim.setvariable('filterQuery', "");
+            }
+      - invoke:
+          target-url: $(TARGET_HOST)$(request.path)?$(filterQuery)
+          tls-profile: 'client:Loopback-client'
+  properties:
+    TARGET_HOST:
+      value: >-
+        https://apiconnect-1c498c30-ecba-44ae-9fa9-09d5438e6825.rgupta1usibmcom-redbook.apic.mybluemix.net
+      description: ''
+      encoded: false
+  gateway: datapower-gateway
+externalDocs:
+  url: 'http://www.companyc.com'

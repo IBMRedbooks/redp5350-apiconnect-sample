@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>oAuthRestUrl</key>
+	<string>https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog</string>
+	<key>clientId</key>
+	<string>561b35bb-ec56-4c19-9d2b-69c3bd0d5a0a</string>
+	<key>clientSecret</key>
+	<string></string>
+	<key>itemRestUrl</key>
+	<string>https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog</string>
+	<key>reviewRestUrl</key>
+	<string>https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog</string>
+	<key>oauthBaseUrl</key>
+	<string>https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog</string>
+	<key>oauthRedirectUri</key>
+	<string>org.apic://example.com</string>
+</dict>
+</plist>

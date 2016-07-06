@@ -1,0 +1,44 @@
+{
+  "name": "review",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "comment": {
+      "type": "string",
+      "required": false,
+      "description": "reviewer comment"
+    },
+    "date": {
+      "type": "date",
+      "required": false,
+      "description": "review date"
+    },
+    "itemId": {
+      "type": "number",
+      "required": true,
+      "description": "Item ID"
+    },
+    "rating": {
+      "type": "number",
+      "required": false,
+      "description": "reviewer item rating"
+    },
+    "reviewer_email": {
+      "type": "string",
+      "required": false,
+      "description": "reviewers email"
+    },
+    "reviewer_name": {
+      "type": "string",
+      "required": false,
+      "description": "reviewers name"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

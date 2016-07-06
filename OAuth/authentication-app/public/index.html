@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Twitter</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var parser = document.createElement('a');
+        //parser.href = "http://example.com:3000/pathname/?search=test#hash";
+        parser.href = window.location.href
+
+        //parser.protocol; // => "http:"
+        //parser.hostname; // => "example.com"
+        //parser.port;     // => "3000"
+        //parser.pathname; // => "/pathname/"
+        //parser.search;   // => "?search=test"
+        var token = parser.hash;     // => "#hash"
+        //parser.host;     // => "example.com:3000"
+
+        //var newUrl = 'org.apic://example.com?' + (token.split('&')[0]).split('#')[1];
+        var newUrl = 'org.apic://example.com?' + token.split('#')[1];
+
+        document.location.replace(newUrl);
+
+    </script>
+</body>
+</html>

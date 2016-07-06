@@ -1,0 +1,14 @@
+{
+  "memdb": {
+    "name": "memdb",
+    "localStorage": "",
+    "file": "db/memdb.json",
+    "connector": "memory"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/storage"
+  }
+}
