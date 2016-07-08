@@ -125,6 +125,7 @@ paths:
         '204':
           description: Request was successful
       deprecated: false
+      security: []
 definitions:
   item:
     properties:
@@ -208,7 +209,7 @@ x-ibm-configuration:
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-0203ebfb-9ff5-495c-81f6-267561ee14bc.rgupta1usibmcom-redbook.apic.mybluemix.net
+        https://apiconnect-12d0327b-003f-420d-9e9e-f8ef635099d5.gangchenusibmcom-apic.apic.mybluemix.net
       description: ''
       encoded: false
   gateway: datapower-gateway

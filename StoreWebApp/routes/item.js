@@ -231,11 +231,21 @@ function renderPage(function_input) {
   var reviews = function_input.data.reviews;
   var res = function_input.res;
 
+ var imageBaseUrl = api_url.stringify({
+    protocol: _apiServer.protocol,
+    host: _apiServer.host,
+    org: _apiServerOrg,
+    cat: _apiServerCatalog,
+    api: "",
+    operation: ""
+  });
+
   // Render the page with the results of the API call
   res.render('item', {
     title: 'ThinkIBM Consumer',
     item: item,
     reviews: reviews,
+    base_url: imageBaseUrl,
     reviews_count: reviews.length
   });
 }

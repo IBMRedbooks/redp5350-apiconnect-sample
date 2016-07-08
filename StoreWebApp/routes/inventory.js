@@ -42,8 +42,6 @@ function setGetItemsOptions(req, res) {
   });
 
 
-  //var items_url = "https://api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks/inventory-catalog/api/items"
-
   var options = {
     method: 'GET',
     url: items_url,
@@ -116,11 +114,22 @@ function renderPage(function_input) {
   var data = function_input.data;
   var res = function_input.res;
 
+
+    var imageBaseUrl = api_url.stringify({
+    protocol: _apiServer.protocol,
+    host: _apiServer.host,
+    org: _apiServerOrg,
+    cat: _apiServerCatalog,
+    api: "",
+    operation: ""
+  });
+
   // Render the page with the results of the API call
   res.render('inventory', {
     title: 'ThinkIBM Consumer',
     item_count: data.length,
     item_array: data,
+    base_url: imageBaseUrl,
     sort_select: page_filter
   });
 }
