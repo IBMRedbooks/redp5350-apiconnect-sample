@@ -27,12 +27,12 @@ public class ApicConfig: Config {
         let redirectUrl: String = appDelegate.userDefaults.objectForKey("oauthRedirectUri") as! String
         
         super.init(base: baseUrl,
-            authzEndpoint: "oauth20/authorize",
+            authzEndpoint: "oauth-provider/oauth2/authorize",
             redirectURL: redirectUrl,
-            accessTokenEndpoint: "oauth20/token",
+            accessTokenEndpoint: "oauth-provider/oauth2/token",
             clientId: clientId,
-            refreshTokenEndpoint: "oauth20/token",
-            revokeTokenEndpoint: "oauth20/revoke",
+            refreshTokenEndpoint: "oauth-provider/oauth2/token",
+            revokeTokenEndpoint: "oauth-provider/oauth2/revoke",
             isOpenIDConnect: isOpenIDConnect,
             userInfoEndpoint: isOpenIDConnect ? "" : nil,
             scopes: scopes,

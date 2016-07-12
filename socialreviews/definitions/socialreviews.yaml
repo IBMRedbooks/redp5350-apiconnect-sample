@@ -120,7 +120,7 @@ securityDefinitions:
     description: ''
     flow: implicit
     authorizationUrl: >-
-      https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog/oauth20/authorize
+      https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog/oauth-provider/oauth2/authorize
     scopes:
       review: Allow user to pose comment/reviews to Social review API
   clientIdHeader:
